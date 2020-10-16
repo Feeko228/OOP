@@ -171,8 +171,106 @@ namespace LAb_1_OOP
                 return matrix;
             }
         }
-       
- 
+        public int MatrixDet(int[,] matrix)
+        {
+            a = Convert.ToInt32(Math.Sqrt(matrix.Length));
+
+            int n = a + (a - 1);
+            int[,] buffer = new int[a, a - 1];
+            int[,] newmatrix = new int[a, n];
+
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < a - 1; j++)
+                {
+                    buffer[i, j] = matrix[i, j];
+                }
+            }
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < a; j++)
+                {
+                    newmatrix[i, j] = matrix[i, j];
+                }
+            }
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = a; j < n; j++)
+                {
+                    newmatrix[i, j] = buffer[i, j - a];
+                }
+            }
+
+            int minusdet = MinusDet(newmatrix, a, n);
+            int plusdet = PlusDet(newmatrix, a, n);
+
+            int det = plusdet - minusdet;
+            return det;
+        }
+        private int MinusDet(int[,] m, int a, int n)
+        {
+            int tmpdet = 1;
+            int tmp = 0;
+            int mindet = 0;
+            int l = 0;
+            int k = 0;
+            while (k < n)
+            {
+                for (int i = a-1; i > -1; i--)
+                {
+                    for (int j = k; j < n; j++)
+                    {
+                        if (j == l + k)
+                        {
+                            tmpdet = tmpdet * m[i, j];
+                            
+                        }
+                    }
+                    l++; tmp = tmpdet;
+                    if (l == a)
+                    {
+                        l = 0; tmpdet = 1;
+                    }
+                }
+                mindet += tmp;
+                k++;
+                if (k == a)
+                    break;
+            }
+            return mindet;
+        }
+        private int PlusDet(int[,] m, int a, int n)
+        {
+            int tmpdet = 1;
+            int tmp = 0;
+            int plusdet = 0;
+            int l = 0;
+            int k = 0;
+            while (k < n)
+            {
+                for (int i = 0; i < a; i++)
+                {
+                    for (int j = k; j < n; j++)
+                    {
+                        if (j == l + k)
+                        {
+                            tmpdet = tmpdet * m[i, j];
+
+                        }
+                    }
+                    l++; tmp = tmpdet;
+                    if (l == a)
+                    {
+                        l = 0; tmpdet = 1;
+                    }
+                }
+                plusdet += tmp;
+                k++;
+                if (k == a)
+                    break;
+            }
+            return plusdet;
+        }
 
         public void CompateMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//сравнение матриц
         {
