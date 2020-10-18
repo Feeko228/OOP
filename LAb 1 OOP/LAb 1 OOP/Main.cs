@@ -23,14 +23,14 @@ namespace LAb_1_OOP
             int[,] first; 
             int[,] second;
             int[,] newmatrix;
-
-            first = matrix.CreateMatrix(3);
+            int a = 4;
+            first = matrix.CreateMatrix(a);
             //second = matrix.CreateMatrix(3);
 
             matrix.ShowMatrix(first);
-            Console.WriteLine("\n");
+            //Console.WriteLine("\n");
             int k = matrix.MatrixDet(first);
-            Console.WriteLine(k);
+            Console.WriteLine($"определитель матрицы размером {a+"x"+a} = " + k);
             //matrix.ShowMatrix(second);
             //Console.WriteLine("\n");
 

@@ -11,3 +11,16 @@ C:\Users\Feeko\source\repos\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OO
 C:\Users\Feeko\source\repos\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.dll
 C:\Users\Feeko\source\repos\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.pdb
 C:\Users\Feeko\source\repos\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.genruntimeconfig.cache
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.exe
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.deps.json
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.runtimeconfig.json
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.runtimeconfig.dev.json
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.dll
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\bin\Debug\netcoreapp3.1\LAb 1 OOP.pdb
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.csprojAssemblyReference.cache
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.AssemblyInfoInputs.cache
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.AssemblyInfo.cs
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.csproj.CoreCompileInputs.cache
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.dll
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.pdb
+G:\Мой диск\репозитории\OOP\LAb 1 OOP\LAb 1 OOP\obj\Debug\netcoreapp3.1\LAb 1 OOP.genruntimeconfig.cache

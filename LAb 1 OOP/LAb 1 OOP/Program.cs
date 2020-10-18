@@ -7,22 +7,28 @@ namespace LAb_1_OOP
     class Matrix
     {
         private Random rand = new Random();
-        private int a = 0;
+        private int a = 0, b = 0;
         private bool isequal;
         public int[,] CreateMatrix(int size)//создание матрицы
         {
             try
             {
                 a = size;
+                int u = 0;
                 int[,] matrix = new int[a, a];
 
                 for (int i = 0; i < a; i++)
                 {
                     for (int j = 0; j < a; j++)
                     {
-                        matrix[i, j] = rand.Next(0, 9);
+                        u++;
+                        //matrix[i, j] = rand.Next(0, 9);
+                        matrix[i, j] = u;
                     }
                 }
+                matrix[2, 2] = 18;
+                matrix[0, 1] = 5;
+                matrix[0, 2] = 4;
                 return matrix;
             }
             catch
@@ -51,9 +57,11 @@ namespace LAb_1_OOP
         }
         public int[,] SumMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//сложение матриц
         {
-            try
+            a = Convert.ToInt32(Math.Sqrt(Firstmatrix.Length));//пофиг какя матрица, у них всеравно доложны совпадать размеры
+            b = Convert.ToInt32(Math.Sqrt(Secondmatrix.Length));//пофиг какя матрица, у них всеравно доложны совпадать размеры
+
+            if (a == b)
             {
-                a = Convert.ToInt32(Math.Sqrt(Firstmatrix.Length));//пофиг какя матрица, у них всеравно доложны совпадать размеры
                 int[,] Newmatrix = new int[a, a];
                 int[,] Failmatrix = new int[a, a];
                 for (int i = 0; i < Math.Sqrt(Firstmatrix.Length); i++)
@@ -66,12 +74,12 @@ namespace LAb_1_OOP
                 Console.WriteLine("Результат: ");
                 return Newmatrix;
             }
-            catch
+            else
             {
-                Console.WriteLine("Слогаемые матрицы длжны быть одного размера");
                 return null;
             }
         }
+
         public int[,] SubMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//вычитание матриц
         {
             try
@@ -174,38 +182,113 @@ namespace LAb_1_OOP
         public int MatrixDet(int[,] matrix)
         {
             a = Convert.ToInt32(Math.Sqrt(matrix.Length));
+            double det = 0;
 
-            int n = a + (a - 1);
-            int[,] buffer = new int[a, a - 1];
-            int[,] newmatrix = new int[a, n];
+            if (a == 2)
+            {
+                det = matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
+                return Convert.ToInt32(det);
+            }
+            if (a == 1)
+                return matrix[0, 0];
+
+            int[,] tmpmatrix = new int[a - 1, a - 1];
 
             for (int i = 0; i < a; i++)
             {
-                for (int j = 0; j < a - 1; j++)
+                int u = 0;
+                for (int j = 1; j < a; j++)
                 {
-                    buffer[i, j] = matrix[i, j];
+                    for (int k = 0; k < a; k++)
+                    {
+                        if (k != i)
+                        {
+                            u++;
+                            tmpmatrix[(u - 1) / (a - 1), (u - 1) % (a - 1)] = matrix[j, k];
+                            //Console.WriteLine(tmpmatrix[(u - 1) / (a - 1), (u - 1) % (a - 1)]);
+                        }
+                    }
                 }
-            }
-            for (int i = 0; i < a; i++)
-            {
-                for (int j = 0; j < a; j++)
-                {
-                    newmatrix[i, j] = matrix[i, j];
-                }
-            }
-            for (int i = 0; i < a; i++)
-            {
-                for (int j = a; j < n; j++)
-                {
-                    newmatrix[i, j] = buffer[i, j - a];
-                }
+                det += Math.Pow(-1, i + 2) * matrix[0, i] * NNDet(tmpmatrix);
+                //Console.WriteLine(det + "=" + Math.Pow(-1, i + 2) + "*" + matrix[0, i] + "*" + NNDet(tmpmatrix));
+                //Console.WriteLine("минор " + NNDet(tmpmatrix));
+
             }
 
-            int minusdet = MinusDet(newmatrix, a, n);
-            int plusdet = PlusDet(newmatrix, a, n);
+            {
+                /* if (a == 3)
+                 {
+                     int n = a + (a - 1);
+                     int[,] buffer = new int[a, a - 1];
+                     int[,] newmatrix = new int[a, n];
 
-            int det = plusdet - minusdet;
-            return det;
+                     for (int i = 0; i < a; i++)
+                     {
+                         for (int j = 0; j < a - 1; j++)
+                         {
+                             buffer[i, j] = matrix[i, j];
+                         }
+                     }
+                     for (int i = 0; i < a; i++)
+                     {
+                         for (int j = 0; j < a; j++)
+                         {
+                             newmatrix[i, j] = matrix[i, j];
+                         }
+                     }
+                     for (int i = 0; i < a; i++)
+                     {
+                         for (int j = a; j < n; j++)
+                         {
+                             newmatrix[i, j] = buffer[i, j - a];
+                         }
+                     }
+
+                     int minusdet = MinusDet(newmatrix, a, n);
+                     int plusdet = PlusDet(newmatrix, a, n);
+
+                     det = plusdet - minusdet;
+                 }*/
+            }
+            //Console.WriteLine(det);
+            return Convert.ToInt32(det);
+        }
+        private int NNDet(int[,] matrix)
+        {
+            a = Convert.ToInt32(Math.Sqrt(matrix.Length));
+            double det = 0;
+
+            if (a == 2)
+            {
+                det = matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
+                return Convert.ToInt32(det);
+            }
+
+
+            int[,] tmpmatrix = new int[a - 1, a - 1];
+
+            for (int i = 0; i < a; i++)
+            {
+                int u = 0;
+                for (int j = 1; j < a; j++)
+                {
+                    for (int k = 0; k < a; k++)
+                    {
+                        if (k != i)
+                        {
+                            u++;
+                            tmpmatrix[(u - 1) / (a - 1), (u - 1) % (a - 1)] = matrix[j, k];
+                            Console.WriteLine(tmpmatrix[(u - 1) / (a - 1), (u - 1) % (a - 1)]);
+                        }
+                    }
+                }
+                det += Math.Pow(-1, i + 2) * matrix[0, i] * NNDet(tmpmatrix);
+                //Console.WriteLine(det + "=" + Math.Pow(-1, i + 2) + "*" + matrix[0, i] + "*" + NNDet(tmpmatrix));
+                Console.WriteLine("минор " + NNDet(tmpmatrix));
+            }
+
+            //Console.WriteLine(det);
+            return Convert.ToInt32(det);
         }
         private int MinusDet(int[,] m, int a, int n)
         {
@@ -216,14 +299,14 @@ namespace LAb_1_OOP
             int k = 0;
             while (k < n)
             {
-                for (int i = a-1; i > -1; i--)
+                for (int i = a - 1; i > -1; i--)
                 {
                     for (int j = k; j < n; j++)
                     {
                         if (j == l + k)
                         {
                             tmpdet = tmpdet * m[i, j];
-                            
+
                         }
                     }
                     l++; tmp = tmpdet;

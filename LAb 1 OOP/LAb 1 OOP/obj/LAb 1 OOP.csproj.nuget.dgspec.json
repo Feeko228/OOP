@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Feeko\\source\\repos\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj": {}
+    "G:\\Мой диск\\репозитории\\OOP\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Feeko\\source\\repos\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj": {
+    "G:\\Мой диск\\репозитории\\OOP\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Feeko\\source\\repos\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj",
+        "projectUniqueName": "G:\\Мой диск\\репозитории\\OOP\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj",
         "projectName": "LAb 1 OOP",
-        "projectPath": "C:\\Users\\Feeko\\source\\repos\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj",
+        "projectPath": "G:\\Мой диск\\репозитории\\OOP\\LAb 1 OOP\\LAb 1 OOP\\LAb 1 OOP.csproj",
         "packagesPath": "C:\\Users\\Feeko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Feeko\\source\\repos\\LAb 1 OOP\\LAb 1 OOP\\obj\\",
+        "outputPath": "G:\\Мой диск\\репозитории\\OOP\\LAb 1 OOP\\LAb 1 OOP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
