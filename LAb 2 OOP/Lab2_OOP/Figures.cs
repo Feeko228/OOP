@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Lab2_OOP
@@ -7,9 +8,10 @@ namespace Lab2_OOP
     class Figures
     {
         protected List<Figures> figures = new List<Figures>();
-        protected int[] xy1, xy2, xy3, xy4 = new int[2];
+        protected double[] xy1, xy2, xy3, xy4 = new double[2];
         protected double lenth, hight, P, S, R, p_sum = 0, s_sum = 0, side_r_length, side_l_length, bottom_length;
         protected string name;
+
         public void Add(Figures figure)//добавление экземпляров фигур в список фигур
         {
             figures.Add(figure);
@@ -31,49 +33,60 @@ namespace Lab2_OOP
             a = "сумма периметров фигур: " + p_sum + "\n" + "сумма площадей фигур: " + s_sum + '\n';
             return a;
         }
-        public string SuperFig()//поиск фигуры с макс и мин пл и пер
+        public string PS_max()//поиск наибольших площадей и периметров
         {
-            string a = null; ;
-            string name_p_max = "u", name_s_max = "u";
-            string name_p_min = "u", name_s_min = "u";
-            double max_P = 0, max_S = 0;
-            double min_P = 1.5E45, min_S = 1.5E45;
-
+            string a = null, nameP = null, nameS = null;
+            double maxP = 0;
+            double maxS = 0;
             for (int i = 0; i < figures.Count; i++)
             {
-                if (figures[i].P > max_P)
+                if (figures[i].P > maxP)
                 {
-                    max_P = figures[i].P;
-                    name_p_max = figures[i].name;
-                }
-                if (figures[i].S > max_S)
-                {
-                    max_S = figures[i].S;
-                    name_s_max = figures[i].name;
-                }
-                if (figures[i].P < min_P)
-                {
-                    min_P = figures[i].P;
-                    name_p_min = figures[i].name;
-                }
-                if (figures[i].S < min_P)
-                {
-                    min_S = figures[i].S;
-                    name_s_min = figures[i].name;
+                    maxP = figures[i].P;
+                    nameP = figures[i].name;
                 }
             }
-            a += name_p_max + " имеет наибольший периметр (" + max_P + ")" + '\n';
-            a += name_s_max + " имеет наибольшую площадь (" + max_S + ")" + '\n';
-            a += '\n';
-            a += name_p_min + " имеет наименьший периметр (" + min_P + ")" + '\n';
-            a += name_s_min + " имеет наименьшую площадь (" + min_S + ")" + '\n';
+            for (int i = 0; i < figures.Count; i++)
+            {
+                if (figures[i].S > maxS)
+                {
+                    maxS = figures[i].S;
+                    nameS = figures[i].name;
+                }
+            }
+            a += nameP + " имеет наибольший периметр (" + maxP + ")" + '\n';
+            a += nameS + " имеет наибольшую площадь (" + maxS + ")" + '\n';
             return a;
-
+        }
+        public string PS_min()//поиск наименьших площадей и периметров
+        {
+            string a = null, nameP = null, nameS = null;
+            double minP = 1.5E45;
+            double minS = 1.5E45;
+            for (int i = 0; i < figures.Count; i++)
+            {
+                if (figures[i].P < minP)
+                {
+                    minP = figures[i].P;
+                    nameP = figures[i].name;
+                }
+            }
+            for (int i = 0; i < figures.Count; i++)
+            {
+                if (figures[i].S < minS)
+                {
+                    minS = figures[i].S;
+                    nameS = figures[i].name;
+                }
+            }
+            a += nameP + " имеет наименьший периметр (" + minP + ")" + '\n';
+            a += nameS + " имеет наименьшую площадь (" + minS + ")" + '\n';
+            return a;
         }
     }
     class Kvadrat : Figures
     {
-        public Kvadrat(int[] xy1, int[] xy2, int[] xy3, int[] xy4, string name)
+        public Kvadrat(double[] xy1, double[] xy2, double[] xy3, double[] xy4, string name)
         {
             this.name = name;
             this.xy1 = xy1;
@@ -90,7 +103,7 @@ namespace Lab2_OOP
     }
     class rectangle : Figures
     {
-        public rectangle(int[] xy1, int[] xy2, int[] xy3, int[] xy4, string name)
+        public rectangle(double[] xy1, double[] xy2, double[] xy3, double[] xy4, string name)
         {
             this.name = name;
             this.xy1 = xy1;
@@ -105,17 +118,19 @@ namespace Lab2_OOP
     }
     class Krug : Figures
     {
-        public Krug(double R, string name)
+        public Krug(double[] xy1, double[] xy2, string name)
         {
             this.name = name;
-            this.R = R;
+            this.xy1 = xy1;
+            this.xy2 = xy2;
+            this.R = Math.Abs(xy1[0] - this.xy2[0]);
             this.P = 2 * this.R * 3.14;
             this.S = 3.14 * Math.Pow(this.R, 2);
         }
     }
     class triangle : Figures
     {
-        public triangle(int[] xy1, int[] xy2, int[] xy3, string name)
+        public triangle(double[] xy1, double[] xy2, double[] xy3, string name)
         {
             this.name = name;
             this.xy1 = xy1;
@@ -124,9 +139,11 @@ namespace Lab2_OOP
             this.side_r_length = Math.Abs(Math.Sqrt(Math.Pow((xy2[0] - xy1[0]), 2) + Math.Pow((xy2[1] - xy1[1]), 2)));
             this.side_l_length = Math.Abs(Math.Sqrt(Math.Pow((xy3[0] - xy2[0]), 2) + Math.Pow((xy3[1] - xy2[1]), 2)));
             this.bottom_length = Math.Abs(Math.Sqrt(Math.Pow((xy3[0] - xy1[0]), 2) + Math.Pow((xy3[1] - xy1[1]), 2)));
-            this.P = (this.side_r_length + this.side_l_length + this.bottom_length) / 2;
-            this.S = Math.Sqrt(this.P * (this.P - this.side_r_length) * (this.P - this.side_l_length) * (this.P - this.bottom_length));
+            this.P = Math.Round((this.side_r_length + this.side_l_length + this.bottom_length) / 2, 2);
+            this.S = Math.Round(Math.Sqrt(this.P * (this.P - this.side_r_length) * (this.P - this.side_l_length) * (this.P - this.bottom_length)), 2);
+
+
+
         }
     }
 }
-
