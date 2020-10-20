@@ -57,11 +57,11 @@ namespace Lab2_OOP
                     name_s_min = figures[i].name;
                 }
             }
-            Console.WriteLine(name_p_max + " имеет наибольший периметр");
-            Console.WriteLine(name_s_max + " имеет наибольшую площадь");
+            Console.WriteLine(name_p_max + " имеет наибольший периметр ("+ max_P + ")");
+            Console.WriteLine(name_s_max + " имеет наибольшую площадь ("+ max_S + ")");
             Console.WriteLine('\n');
-            Console.WriteLine(name_p_min + " имеет наименьший периметр");
-            Console.WriteLine(name_s_min + " имеет наименьшую площадь");
+            Console.WriteLine(name_p_min + " имеет наименьший периметр (" + min_P + ")");
+            Console.WriteLine(name_s_min + " имеет наименьшую площадь (" + min_S + ")");
 
         }
         public class Kvadrat : Figures
