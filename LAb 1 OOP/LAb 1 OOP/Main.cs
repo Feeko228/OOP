@@ -4,39 +4,13 @@ using System.Text;
 
 namespace LAb_1_OOP
 {
-    /*
-     CreateMatrix(int size)//создание матрицы
-     ShowMatrix(int[,] matrix)//просмотр размерности и вывод матрицы
-     SumMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//сложение матриц
-     SubMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//вычитание матриц
-     MultMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//умножение матриц
-     MultScalMatrix(int[,] matrix, int scalar)//уминожение матриц на скаляр
-     FindChangeElem(int[,] matrix, int firstpos, int secondpose, int newelement)//поиск и замена элемента матрицы
-     MatrixDet(int[,] matrix)
-     CompateMatrix(int[,] Firstmatrix, int[,] Secondmatrix)//сравнение матриц
-     */
     class Program
     {
         static void Main(string[] args)
         {
-            Matrix matrix = new Matrix();
-            int[,] first; 
-            int[,] second;
-            int[,] newmatrix;
-            int a = 4;
-            first = matrix.CreateMatrix(a);
-            //second = matrix.CreateMatrix(3);
+            Matr matrix = new Matr(2, 2);
 
-            matrix.ShowMatrix(first);
-            //Console.WriteLine("\n");
-            int k = matrix.MatrixDet(first);
-            Console.WriteLine($"определитель матрицы размером {a+"x"+a} = " + k);
-            //matrix.ShowMatrix(second);
-            //Console.WriteLine("\n");
-
-            //newmatrix = matrix.MultMatrix(first, second);
-
-            //matrix.ShowMatrix(newmatrix);
+           //matrix.OutMatr();
         }
     }
 }
