@@ -46,9 +46,6 @@ namespace Lab2_OOP
                     max_S = figures[i].S;
                     name_s_max = figures[i].name;
                 }
-            }
-            for (int i = 0; i < figures.Count; i++)
-            {
                 if (figures[i].P < min_P)
                 {
                     min_P = figures[i].P;

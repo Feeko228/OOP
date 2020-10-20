@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Feeko\\source\\repos\\Lab2_OOP\\Lab2_OOP\\Lab2_OOP.csproj",
+      "projectUniqueName": "G:\\Мой диск\\репозитории\\OOP\\LAb 2 OOP\\Lab2_OOP\\Lab2_OOP.csproj",
       "projectName": "Lab2_OOP",
-      "projectPath": "C:\\Users\\Feeko\\source\\repos\\Lab2_OOP\\Lab2_OOP\\Lab2_OOP.csproj",
+      "projectPath": "G:\\Мой диск\\репозитории\\OOP\\LAb 2 OOP\\Lab2_OOP\\Lab2_OOP.csproj",
       "packagesPath": "C:\\Users\\Feeko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Feeko\\source\\repos\\Lab2_OOP\\Lab2_OOP\\obj\\",
+      "outputPath": "G:\\Мой диск\\репозитории\\OOP\\LAb 2 OOP\\Lab2_OOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
