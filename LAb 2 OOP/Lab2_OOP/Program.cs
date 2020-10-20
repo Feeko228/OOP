@@ -35,24 +35,20 @@ namespace Lab2_OOP
             int[] xy21 = { 3, 2 };
             int[] xy22 = { 3, 0 };
 
-
             Figures figures = new Figures();
 
-            figures.Add(new Figures.Kvadrat(xy1, xy2, xy3, xy4, "квадрат 1"));
-            figures.Add(new Figures.Kvadrat(xy15, xy16, xy17, xy18, "квадрат 2"));
-            figures.Add(new Figures.rectangle(xy5, xy6, xy7, xy8, "прямоугольник 1"));
-            figures.Add(new Figures.rectangle(xy19, xy20, xy21, xy22, "прямоугольник 2"));
-            figures.Add(new Figures.Krug(2, "круг 1"));
-            figures.Add(new Figures.Krug(1.5, "круг 2"));
-            figures.Add(new Figures.triangle(xy9, xy10, xy11, "треугольник 1"));
-            figures.Add(new Figures.triangle(xy12, xy13, xy14, "треугольник 2"));
+            figures.Add(new Kvadrat(xy1, xy2, xy3, xy4, "квадрат 1"));
+            figures.Add(new Kvadrat(xy15, xy16, xy17, xy18, "квадрат 2"));
+            figures.Add(new rectangle(xy5, xy6, xy7, xy8, "прямоугольник 1"));
+            figures.Add(new rectangle(xy19, xy20, xy21, xy22, "прямоугольник 2"));
+            figures.Add(new Krug(2, "круг 1"));
+            figures.Add(new Krug(1.5, "круг 2"));
+            figures.Add(new triangle(xy9, xy10, xy11, "треугольник 1"));
+            figures.Add(new triangle(xy12, xy13, xy14, "треугольник 2"));
 
-
-            figures.ShowP_S();
-            Console.WriteLine('\n');
-            figures.P_S_Sum();
-            Console.WriteLine('\n');
-            figures.SuperFig();
+            Console.WriteLine(figures.ShowP_S());
+            Console.WriteLine(figures.P_S_Sum());
+            Console.WriteLine(figures.SuperFig());
         }
     }
 }
