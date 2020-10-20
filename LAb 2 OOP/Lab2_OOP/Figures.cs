@@ -10,16 +10,16 @@ namespace Lab2_OOP
         private int[] xy1, xy2, xy3, xy4 = new int[2];
         private double lenth, hight, P, S, R, p_sum = 0, s_sum = 0, side_r_length, side_l_length, bottom_length;
         private string name;
-        public void Add(Figures figure)
+        public void Add(Figures figure)//добавление экземпляров фигур в список фигур
         {
             figures.Add(figure);
         }
-        public void ShowP_S()
+        public void ShowP_S()//выввод инфы о фигурах в списке
         {
             for (int i = 0; i < figures.Count; i++)
                 Console.WriteLine(figures[i].name + ": " + "периметр = " + figures[i].P + " площадь = " + figures[i].S);
         }
-        public void P_S_Sum()
+        public void P_S_Sum()//общая площадь и периметр всех фигур
         {
             for (int i = 0; i < figures.Count; i++)
                 p_sum += figures[i].P;
@@ -27,7 +27,7 @@ namespace Lab2_OOP
                 s_sum += figures[i].S;
             Console.WriteLine("сумма периметров фигур: " + p_sum + "\n" + "сумма площадей фигур: " + s_sum);
         }
-        public void SuperFig()
+        public void SuperFig()//поиск фигуры с макс и мин пл и пер
         {
             string name_p_max = "u", name_s_max = "u";
             string name_p_min = "u", name_s_min = "u";
