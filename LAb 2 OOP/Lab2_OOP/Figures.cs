@@ -141,9 +141,6 @@ namespace Lab2_OOP
             this.bottom_length = Math.Abs(Math.Sqrt(Math.Pow((xy3[0] - xy1[0]), 2) + Math.Pow((xy3[1] - xy1[1]), 2)));
             this.P = Math.Round((this.side_r_length + this.side_l_length + this.bottom_length) / 2, 2);
             this.S = Math.Round(Math.Sqrt(this.P * (this.P - this.side_r_length) * (this.P - this.side_l_length) * (this.P - this.bottom_length)), 2);
-
-
-
         }
     }
 }
