@@ -1,0 +1,26 @@
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.exe
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.deps.json
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.runtimeconfig.json
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.runtimeconfig.dev.json
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.dll
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.pdb
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.csprojAssemblyReference.cache
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.AssemblyInfoInputs.cache
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.AssemblyInfo.cs
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.csproj.CoreCompileInputs.cache
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.dll
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.pdb
+C:\Users\Feeko\source\repos\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.genruntimeconfig.cache
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.exe
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.deps.json
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.runtimeconfig.json
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.runtimeconfig.dev.json
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.dll
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\bin\Debug\netcoreapp3.1\Lab3_OOP.pdb
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.csprojAssemblyReference.cache
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.AssemblyInfoInputs.cache
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.AssemblyInfo.cs
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.csproj.CoreCompileInputs.cache
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.dll
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.pdb
+G:\Мой диск\репозитории\OOP\Lab3_OOP\Lab3_OOP\obj\Debug\netcoreapp3.1\Lab3_OOP.genruntimeconfig.cache
