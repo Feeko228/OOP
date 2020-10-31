@@ -24,7 +24,7 @@ namespace Lab3_OOP
 
             book[0].ChangeName("Димо");
             book[2].numbers[0].change(1, "+sdfsdf");
-            Console.WriteLine(book[2].numbers[0].type);
+
             foreach (ContactsBook.Contact a in book.Show())
             {
                 Console.WriteLine(a.name);

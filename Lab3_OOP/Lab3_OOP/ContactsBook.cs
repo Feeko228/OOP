@@ -71,7 +71,7 @@ namespace Lab3_OOP
         {
             public string number { get; private set; }
             public string type { get; private set; }
-            private string CheckNumver(string num)
+            private string CheckNumber(string num)
             {
                 string numm = num;
                 if (Regex.IsMatch(num, "^[+][0-9]+$") || Regex.IsMatch(num, "^[0-9]+$"))
@@ -95,12 +95,12 @@ namespace Lab3_OOP
             }
             public void change(short type, string number)
             {
-                this.number = CheckNumver(number);
+                this.number = CheckNumber(number);
                 this.type = CheckType(type);
             }
             public Numbers(short type, string number)
             {
-                this.number = CheckNumver(number);
+                this.number = CheckNumber(number);
                 this.type = CheckType(type);
             }
         }
