@@ -23,7 +23,9 @@ namespace Lab3_OOP
         }
         public List<Contact> Show()
         {
-            return contacts;
+            List<Contact> newlist = new List<Contact>();
+            newlist.AddRange(contacts);
+            return newlist;
         }
         public List<Contact> Find(string word)
         { 
