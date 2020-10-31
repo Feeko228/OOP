@@ -21,26 +21,25 @@ namespace Lab3_OOP
 
             book[2].AddNumber(1, "+7122342746");
             book[2].AddNumber(5, "982281488");
-            // book[0].name = "Другой дима";
-            // book[0].numbers[0].number = "345345";
 
-            List<ContactsBook.Contact> contacts = book.Show();
-            List<ContactsBook.Contact> names = book.Find("3");
-            foreach (ContactsBook.Contact a in contacts)
+            book[0].ChangeName("Димо");
+            book[2].numbers[0].change(1, "+sdfsdf");
+            Console.WriteLine(book[2].numbers[0].type);
+            foreach (ContactsBook.Contact a in book.Show())
             {
                 Console.WriteLine(a.name);
                 for (int i = 0; i < a.numbers.Count; i++)
                 {
-                    Console.WriteLine(a.numbers[i].number + " " + a.numbers[i].type);
+                    Console.WriteLine(a.numbers[i].type + " " + a.numbers[i].number);
                 }
             }
             Console.WriteLine('\n');
-            foreach (ContactsBook.Contact a in names)
+            foreach (ContactsBook.Contact a in book.Find("3"))
             {
                 Console.WriteLine(a.name);
                 for (int i = 0; i < a.numbers.Count; i++)
                 {
-                    Console.WriteLine(a.numbers[i].number + " " + a.numbers[i].type);
+                    Console.WriteLine(a.numbers[i].type + " " + a.numbers[i].number);
                 }
             }
         }

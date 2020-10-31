@@ -26,7 +26,7 @@ namespace Lab3_OOP
             return contacts;
         }
         public List<Contact> Find(string word)
-        {
+        { 
             List<Contact> Found = new List<Contact>();
             foreach (Contact a in contacts)
             {
@@ -49,10 +49,7 @@ namespace Lab3_OOP
         {
             public string name { get; private set; }
             public List<Numbers> numbers = new List<Numbers>();
-            public Numbers this[int i]
-            {
-                get { return numbers[i]; }
-            }
+
             public Contact(string name)
             {
                 this.name = name;
@@ -65,12 +62,16 @@ namespace Lab3_OOP
             {
                 numbers.RemoveAt(index);
             }
+            public void ChangeName(string name)
+            {
+                this.name = name;
+            }
         }
         public class Numbers
         {
             public string number { get; private set; }
             public string type { get; private set; }
-            string CheckNumver(string num)
+            private string CheckNumver(string num)
             {
                 string numm = num;
                 if (Regex.IsMatch(num, "^[+][0-9]+$") || Regex.IsMatch(num, "^[0-9]+$"))
@@ -78,7 +79,7 @@ namespace Lab3_OOP
                 else
                     return "INVALID NUMBER";
             }
-            string CheckType(short typ)
+            private string CheckType(short typ)
             {
                 switch (typ)
                 {
@@ -91,6 +92,11 @@ namespace Lab3_OOP
                     default:
                         return "INVALID TYPE";
                 }
+            }
+            public void change(short type, string number)
+            {
+                this.number = CheckNumver(number);
+                this.type = CheckType(type);
             }
             public Numbers(short type, string number)
             {
