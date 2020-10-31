@@ -1,150 +1,142 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Lab2_OOP
 {
     class Figures
     {
-        protected List<Figures> figures = new List<Figures>();
-        protected double[] xy1, xy2, xy3, xy4 = new double[2];
-        protected double lenth, hight, P, S, R, p_sum = 0, s_sum = 0, side_r_length, side_l_length, bottom_length;
+        List<Shape> figures = new List<Shape>();
 
-        public string name { get; private set; }
-
-        public void Add(Figures figure)//adding instances of shapes to the list of shapes
+        public Shape this[int i]
         {
-            figures.Add(figure);
+            get { return figures[i]; }
         }
-        public string ShowP_S()//displaying information about the shapes in the list
+        public void AddShape(Shape shape)
         {
-            string a = null;
-            for (int i = 0; i < figures.Count; i++)
-                a += figures[i].name + ": " + "perimeter = " + figures[i].P + " square = " + figures[i].S + '\n';
-            return a;
+            figures.Add(shape);
         }
-        public string P_S_Sum()//total area and perimeter of all shapes
+        public double AllAreaSumm()
         {
-            string a = null;
-            for (int i = 0; i < figures.Count; i++)
-                p_sum += figures[i].P;
-            for (int i = 0; i < figures.Count; i++)
-                s_sum += figures[i].S;
-            a = "sum of perimeters of figures: " + p_sum + "\n" + "sum of perimeters of figures: " + s_sum + '\n';
-            return a;
+            double num = 0;
+            foreach (Shape a in figures)
+                num += a.CalcArea();
+            return num;
         }
-        public string PS_max()//search for the largest areas and perimeters
+        public double AllPerimSumm()
         {
-            string a = null, nameP = null, nameS = null;
-            double maxP = 0;
-            double maxS = 0;
-            for (int i = 0; i < figures.Count; i++)
-            {
-                if (figures[i].P > maxP)
-                {
-                    maxP = figures[i].P;
-                    nameP = figures[i].name;
-                }
-            }
-            for (int i = 0; i < figures.Count; i++)
-            {
-                if (figures[i].S > maxS)
-                {
-                    maxS = figures[i].S;
-                    nameS = figures[i].name;
-                }
-            }
-            a += nameP + " has the largest perimeter (" + maxP + ")" + '\n';
-            a += nameS + " has the largest area (" + maxS + ")" + '\n';
-            return a;
+            double num = 0;
+            foreach (Shape a in figures)
+                num += a.CalcPerim();
+            return num;
         }
-        public string PS_min()//finding the smallest areas and perimeters
+        public double MaxArea()
         {
-            string a = null, nameP = null, nameS = null;
-            double minP = 1.5E45;
-            double minS = 1.5E45;
-            for (int i = 0; i < figures.Count; i++)
-            {
-                if (figures[i].P < minP)
-                {
-                    minP = figures[i].P;
-                    nameP = figures[i].name;
-                }
-            }
-            for (int i = 0; i < figures.Count; i++)
-            {
-                if (figures[i].S < minS)
-                {
-                    minS = figures[i].S;
-                    nameS = figures[i].name;
-                }
-            }
-            a += nameP + " has the smallest perimeter (" + minP + ")" + '\n';
-            a += nameS + " has the smallest area (" + minS + ")" + '\n';
-            return a;
+            double max = 0;
+            foreach (Shape a in figures)
+                if (a.CalcArea() > max)
+                    max = a.CalcArea();
+            return max;
         }
-
-        class Square
+        public double MinArea()
         {
-            public Square(double[] xy1, double[] xy2, double[] xy3, double[] xy4, string name)
-            {
-                this.name = name;
-                this.xy1 = xy1;
-                this.xy2 = xy2;
-                this.xy3 = xy3;
-                this.xy4 = xy4;
-                this.lenth = Math.Abs(this.xy1[0] - this.xy4[0]);
-                this.hight = Math.Abs(this.xy1[1] - this.xy2[1]);
-                if (this.lenth != this.hight)
-                    throw new IndexOutOfRangeException("NotEqualSidesEx");
-                this.P = this.lenth * 4;
-                this.S = this.lenth * this.hight;
-            }
+            double min = 1.7976931348623158e+308;
+            foreach (Shape a in figures)
+                if (a.CalcArea() < min)
+                    min = a.CalcArea();
+            return min;
         }
-        class rectangle
+        public double MaxPerim()
         {
-            private string name = null;
-            private string name = null;
-            public rectangle(double[] xy1, double[] xy2, double[] xy3, double[] xy4, string name)
-            {
-                this.name = name;
-                this.xy1 = xy1;
-                this.xy2 = xy2;
-                this.xy3 = xy3;
-                this.xy4 = xy4;
-                this.lenth = Math.Abs(this.xy1[0] - this.xy4[0]);
-                this.hight = Math.Abs(this.xy1[1] - this.xy2[1]);
-                this.P = this.lenth * 2 + this.hight * 2;
-                this.S = this.lenth * this.hight;
-            }
+            double max = 0;
+            foreach (Shape a in figures)
+                if (a.CalcPerim() > max)
+                    max = a.CalcPerim();
+            return max;
         }
-        class circle
+        public double MinPerim()
         {
-            public circle(double[] xy1, double[] xy2, string name)
-            {
-                this.name = name;
-                this.xy1 = xy1;
-                this.xy2 = xy2;
-                this.R = Math.Abs(xy1[0] - this.xy2[0]);
-                this.P = 2 * this.R * 3.14;
-                this.S = 3.14 * Math.Pow(this.R, 2);
-            }
+            double min = 1.7976931348623158e+308;
+            foreach (Shape a in figures)
+                if (a.CalcPerim() < min)
+                    min = a.CalcPerim();
+            return min;
         }
-        class triangle
+    }
+    interface Shape
+    {
+        double CalcArea();
+        double CalcPerim();
+    }
+    class Square : Shape
+    {
+        double SideLength;
+        public Square(Point p1, Point p2)
         {
-            public triangle(double[] xy1, double[] xy2, double[] xy3, string name)
-            {
-                this.name = name;
-                this.xy1 = xy1;
-                this.xy2 = xy2;
-                this.xy3 = xy3;
-                this.side_r_length = Math.Abs(Math.Sqrt(Math.Pow((xy2[0] - xy1[0]), 2) + Math.Pow((xy2[1] - xy1[1]), 2)));
-                this.side_l_length = Math.Abs(Math.Sqrt(Math.Pow((xy3[0] - xy2[0]), 2) + Math.Pow((xy3[1] - xy2[1]), 2)));
-                this.bottom_length = Math.Abs(Math.Sqrt(Math.Pow((xy3[0] - xy1[0]), 2) + Math.Pow((xy3[1] - xy1[1]), 2)));
-                this.P = Math.Round((this.side_r_length + this.side_l_length + this.bottom_length) / 2, 2);
-                this.S = Math.Round(Math.Sqrt(this.P * (this.P - this.side_r_length) * (this.P - this.side_l_length) * (this.P - this.bottom_length)), 2);
-            }
+            SideLength = Math.Abs(p1.X - p2.Y);
+        }
+        public double CalcArea()
+        {
+            return Math.Pow(SideLength, 2);
+        }
+        public double CalcPerim()
+        {
+            return SideLength * 4;
+        }
+    }
+    class Rectangle : Shape
+    {
+        private double LeftSide;
+        private double BottomSide;
+        public Rectangle(Point p1, Point p2)
+        {
+            LeftSide = Math.Abs(p1.Y - p2.Y);
+            BottomSide = Math.Abs(p1.X - p2.X);
+        }
+        public double CalcArea()
+        {
+            return LeftSide * BottomSide;
+        }
+        public double CalcPerim()
+        {
+            return (LeftSide * 2) + (BottomSide * 2);
+        }
+    }
+    class Circle : Shape
+    {
+        private double Radius;
+        public double CalcArea()
+        {
+            return 3.14 * Math.Pow(Radius, 2);
+        }
+        public double CalcPerim()
+        {
+            return 2 * Radius * 3.14;
+        }
+        public Circle(Point p1, Point p2)
+        {
+            Radius = Math.Abs(p1.X - p2.X);
+        }
+    }
+    class Triangle : Shape
+    {
+        private int side_r_length, side_l_length, bottom_length;
+        public double CalcArea()
+        {
+            return Math.Sqrt(CalcPerim() / 2 * (CalcPerim() / 2 - side_r_length) * (CalcPerim() / 2 - side_l_length) * (CalcPerim() / 2 - bottom_length));
+        }
+        public double CalcPerim()
+        {
+            return side_r_length + side_l_length + bottom_length;
+        }
+        public Triangle(Point p1, Point p2, Point p3)
+        {
+            side_r_length = Math.Abs(p3.Y - p2.Y);
+            side_l_length = Math.Abs(p1.Y - p3.Y);
+            bottom_length = Math.Abs(p1.X - p2.X);
         }
     }
 }
