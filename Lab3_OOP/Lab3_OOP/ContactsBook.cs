@@ -12,6 +12,7 @@ namespace Lab3_OOP
     class ContactsBook
     {
         private List<Contact> contacts = new List<Contact>();
+
         public Contact this[int i]
         {
             get { return contacts[i]; }
@@ -20,49 +21,25 @@ namespace Lab3_OOP
         {
             this.contacts.Add(new Contact(name));
         }
-        public string ShowContacts()
+        public List<Contact> Show()
         {
-            string cout = "Все контакты:" + '\n';
-            foreach (Contact a in contacts)
-            {
-                cout += a.name + ": ";
-                for (int i = 0; i < a.numbers.Count; i++)
-                    cout += a[i].type + ": " + a[i].number + " ";
-                cout += '\n';
-            }
-            return cout;
+            return contacts;
         }
-        public string FindContact(string word)
+        public List<Contact> Find(string word)
         {
-            string cout = "Контакт(ы) по запросу \"" + word + "\":" + '\n';
-            bool wasfound = false;
+            List<Contact> Found = new List<Contact>();
             foreach (Contact a in contacts)
             {
                 if (a.name.Contains(word))
-                {
-                    wasfound = true;
-                    cout += a.name + ": ";
+                    Found.Add(a);
+                else
                     for (int i = 0; i < a.numbers.Count; i++)
-                        cout += a[i].type + ": " + a[i].number + "; ";
-                    cout += '\n';
-                }
-                else wasfound = false;
+                    {
+                        if (a.numbers[i].number.Contains(word))
+                            Found.Add(a);
+                    }
             }
-            if (wasfound == false)
-                foreach (Contact a in contacts)
-                {
-                    for (int i = 0; i < a.numbers.Count; i++)
-                        if (a[i].number.Contains(word))
-                        {
-                            cout += a.name + ": ";
-                            for (int j = 0; j < a.numbers.Count; j++)
-                                if (a[j].number.Contains(word))
-                                    cout += a[j].type + ": " + a[j].number + "; ";
-                            cout += '\n';
-                            break;
-                        }
-                }
-            return cout;
+            return Found;
         }
         public void RemoveContact(int index)
         {
@@ -70,7 +47,7 @@ namespace Lab3_OOP
         }
         public class Contact
         {
-            public string name;
+            public string name { get; private set; }
             public List<Numbers> numbers = new List<Numbers>();
             public Numbers this[int i]
             {
@@ -91,16 +68,17 @@ namespace Lab3_OOP
         }
         public class Numbers
         {
-            public string number, type;
+            public string number { get; private set; }
+            public string type { get; private set; }
             string CheckNumver(string num)
             {
                 string numm = num;
                 if (Regex.IsMatch(num, "^[+][0-9]+$") || Regex.IsMatch(num, "^[0-9]+$"))
                     return numm;
                 else
-                    return "Invalid number";
+                    return "INVALID NUMBER";
             }
-            string Types(short typ)
+            string CheckType(short typ)
             {
                 switch (typ)
                 {
@@ -111,13 +89,13 @@ namespace Lab3_OOP
                     case 3:
                         return "WORK";
                     default:
-                        return "UNKNOWN";
+                        return "INVALID TYPE";
                 }
             }
             public Numbers(short type, string number)
             {
                 this.number = CheckNumver(number);
-                this.type = Types(type);
+                this.type = CheckType(type);
             }
         }
     }

@@ -43,12 +43,12 @@ namespace Lab2_OOP
 
             Figures figures = new Figures();
 
-            figures.Add(new Kvadrat(xy1, xy2, xy3, xy4, "квадрат 1"));
-            figures.Add(new Kvadrat(xy15, xy16, xy17, xy18, "квадрат 2"));
+            figures.Add(new Square(xy1, xy2, xy3, xy4, "квадрат 1"));
+            figures.Add(new Square(xy15, xy16, xy17, xy18, "квадрат 2"));
             figures.Add(new rectangle(xy5, xy6, xy7, xy8, "прямоугольник 1"));
             figures.Add(new rectangle(xy19, xy20, xy21, xy22, "прямоугольник 2"));
-            figures.Add(new Krug(xy23, xy24, "круг 1"));
-            figures.Add(new Krug(xy25, xy26, "круг 2"));
+            figures.Add(new circle(xy23, xy24, "круг 1"));
+            figures.Add(new circle(xy25, xy26, "круг 2"));
             figures.Add(new triangle(xy9, xy10, xy11, "треугольник 1"));
             figures.Add(new triangle(xy12, xy13, xy14, "треугольник 2"));
 
