@@ -74,18 +74,9 @@ namespace Lab2_OOP
     class Square : IShape
     {
         double SideLength;
-        public Square(Point p1, Point p2)
-        {
-            SideLength = Math.Abs(p1.Y - p2.Y);
-        }
-        public double CalcArea()
-        {
-            return Math.Pow(SideLength, 2);
-        }
-        public double CalcPerim()
-        {
-            return SideLength * 4;
-        }
+        public Square(Point p1, Point p2) { SideLength = Math.Abs(p1.Y - p2.Y); }
+        public double CalcArea() {return Math.Pow(SideLength, 2); }
+        public double CalcPerim() { return SideLength * 4; }
     }
     class Rectangle : IShape
     {
@@ -96,30 +87,15 @@ namespace Lab2_OOP
             LeftSide = Math.Abs(p1.Y - p2.Y);
             BottomSide = Math.Abs(p1.X - p2.X);
         }
-        public double CalcArea()
-        {
-            return LeftSide * BottomSide;
-        }
-        public double CalcPerim()
-        {
-            return (LeftSide * 2) + (BottomSide * 2);
-        }
+        public double CalcArea() { return LeftSide * BottomSide; }
+        public double CalcPerim() { return (LeftSide * 2) + (BottomSide * 2); }
     }
     class Circle : IShape
     {
         private double Radius;
-        public double CalcArea()
-        {
-            return 3.14 * Math.Pow(Radius, 2);
-        }
-        public double CalcPerim()
-        {
-            return 2 * Radius * 3.14;
-        }
-        public Circle(Point p1, Point p2)
-        {
-            Radius = Math.Abs(p1.X - p2.X);
-        }
+        public double CalcArea() { return 3.14 * Math.Pow(Radius, 2); }
+        public double CalcPerim() { return 2 * Radius * 3.14; }
+        public Circle(Point p1, Point p2) { Radius = Math.Abs(p1.X - p2.X); }
     }
     class Triangle : IShape
     {
@@ -128,10 +104,7 @@ namespace Lab2_OOP
         {
             return Math.Sqrt(CalcPerim() / 2 * (CalcPerim() / 2 - side_r_length) * (CalcPerim() / 2 - side_l_length) * (CalcPerim() / 2 - bottom_length));
         }
-        public double CalcPerim()
-        {
-            return side_r_length + side_l_length + bottom_length;
-        }
+        public double CalcPerim() { return side_r_length + side_l_length + bottom_length; }
         public Triangle(Point p1, Point p2, Point p3)
         {
             side_r_length = Math.Abs(p3.Y - p2.Y);
