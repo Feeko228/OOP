@@ -76,7 +76,7 @@ namespace Lab2_OOP
         double SideLength;
         public Square(Point p1, Point p2)
         {
-            SideLength = Math.Abs(p1.X - p2.Y);
+            SideLength = Math.Abs(p1.Y - p2.Y);
         }
         public double CalcArea()
         {

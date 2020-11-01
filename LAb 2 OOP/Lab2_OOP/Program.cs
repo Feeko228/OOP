@@ -10,8 +10,8 @@ namespace Lab2_OOP
         {
             Figures figures = new Figures();
 
-            figures.AddShape(new Square(new Point(0, 0), new Point(0, 10)));
-            figures.AddShape(new Rectangle(new Point(0, 0), new Point(5, 10)));
+            figures.AddShape(new Square(new Point(0, 0), new Point(0, 10)));//координаты углов одной изсторон
+            figures.AddShape(new Rectangle(new Point(0, 0), new Point(5, 10)));//координаты нижнего левого и правого верхеного углов
             figures.AddShape(new Circle(new Point(0, 0), new Point(6, 0)));
             figures.AddShape(new Triangle(new Point(0, 0), new Point(6, 0), new Point(3, 5)));
 
