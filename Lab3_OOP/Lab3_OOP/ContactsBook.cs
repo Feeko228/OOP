@@ -12,15 +12,8 @@ namespace Lab3_OOP
     class ContactsBook
     {
         private List<Contact> contacts = new List<Contact>();
-
-        public Contact this[int i]
-        {
-            get { return contacts[i]; }
-        }
-        public void AddContact(string name)
-        {
-            this.contacts.Add(new Contact(name));
-        }
+        public Contact this[int i] { get { return contacts[i]; } }
+        public void AddContact(string name) { this.contacts.Add(new Contact(name)); }
         public List<Contact> Show()
         {
             List<Contact> newlist = new List<Contact>();
@@ -43,31 +36,15 @@ namespace Lab3_OOP
             }
             return Found;
         }
-        public void RemoveContact(int index)
-        {
-            contacts.RemoveAt(index);
-        }
+        public void RemoveContact(int index) { contacts.RemoveAt(index); }
         public class Contact
         {
             public string name { get; private set; }
             public List<Numbers> numbers = new List<Numbers>();
-
-            public Contact(string name)
-            {
-                this.name = name;
-            }
-            public void AddNumber(short type, string number)
-            {
-                numbers.Add(new Numbers(type, number));
-            }
-            public void RemoveNumber(int index)
-            {
-                numbers.RemoveAt(index);
-            }
-            public void ChangeName(string name)
-            {
-                this.name = name;
-            }
+            public Contact(string name) { this.name = name; }
+            public void AddNumber(short type, string number) { numbers.Add(new Numbers(type, number)); }
+            public void RemoveNumber(int index) { numbers.RemoveAt(index); }
+            public void ChangeName(string name) { this.name = name; }
         }
         public class Numbers
         {
