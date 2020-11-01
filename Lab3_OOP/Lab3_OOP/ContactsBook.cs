@@ -21,7 +21,7 @@ namespace Lab3_OOP
             return newlist;
         }
         public List<Contact> Find(string word)
-        { 
+        {
             List<Contact> Found = new List<Contact>();
             foreach (Contact a in contacts)
             {
