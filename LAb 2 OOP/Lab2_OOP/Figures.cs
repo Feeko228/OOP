@@ -93,9 +93,9 @@ namespace Lab2_OOP
     class Circle : IShape
     {
         private double Radius;
+        public Circle(Point p1, Point p2) { Radius = Math.Abs(p1.X - p2.X); }
         public double CalcArea() { return 3.14 * Math.Pow(Radius, 2); }
         public double CalcPerim() { return 2 * Radius * 3.14; }
-        public Circle(Point p1, Point p2) { Radius = Math.Abs(p1.X - p2.X); }
     }
     class Triangle : IShape
     {
