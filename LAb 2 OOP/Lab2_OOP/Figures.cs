@@ -33,43 +33,60 @@ namespace Lab2_OOP
                 num += a.CalcPerim();
             return num;
         }
-        public double MaxArea()
+        public IShape MaxArea()
         {
             double max = 0;
-            foreach (IShape a in figures)
-                if (a.CalcArea() > max)
-                    max = a.CalcArea();
-            return max;
-        }
-        public double MinArea()
-        {
-            double min = 1.7976931348623158e+308;
-            foreach (IShape a in figures)
-                if (a.CalcArea() < min)
-                    min = a.CalcArea();
-            return min;
-        }
-        public double MaxPerim()
-        {
-            double max = 0;
+            IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() > max)
-                    max = a.CalcPerim();
-            return max;
+                {
+                    max = a.CalcArea();
+                    found = a;
+                }
+            return found;
         }
-        public double MinPerim()
+        public IShape MinArea()
         {
             double min = 1.7976931348623158e+308;
+            IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() < min)
+                {
+                    min = a.CalcArea();
+                    found = a;
+                }
+            return found;
+        }
+        public IShape MaxPerim()
+        {
+            double max = 0;
+            IShape found = null;
+            foreach (IShape a in figures)
+                if (a.CalcPerim() > max)
+                {
+                    max = a.CalcPerim();
+                    found = a;
+                }
+            return found;
+        }
+        public IShape MinPerim()
+        {
+            double min = 1.7976931348623158e+308;
+            IShape found = null;
+            foreach (IShape a in figures)
+                if (a.CalcPerim() < min)
+                {
                     min = a.CalcPerim();
-            return min;
+                    found = a;
+                }
+            return found;
         }
     }
     interface IShape
     {
         double CalcArea();
         double CalcPerim();
+        string ToString();
     }
     class Square : IShape
     {
@@ -77,6 +94,7 @@ namespace Lab2_OOP
         public Square(Point p1, Point p2) { SideLength = Math.Abs(p1.Y - p2.Y); }
         public double CalcArea() {return Math.Pow(SideLength, 2); }
         public double CalcPerim() { return SideLength * 4; }
+        public override string ToString() { return $"Perimeter of Square is {CalcPerim()} and Area is {CalcArea()}" ; }
     }
     class Rectangle : IShape
     {
@@ -89,6 +107,7 @@ namespace Lab2_OOP
         }
         public double CalcArea() { return LeftSide * BottomSide; }
         public double CalcPerim() { return (LeftSide * 2) + (BottomSide * 2); }
+        public override string ToString() { return $"Perimeter of Rectangle is {CalcPerim()} and Area is {CalcArea()}"; }
     }
     class Circle : IShape
     {
@@ -96,6 +115,8 @@ namespace Lab2_OOP
         public Circle(Point p1, Point p2) { Radius = Math.Abs(p1.X - p2.X); }
         public double CalcArea() { return 3.14 * Math.Pow(Radius, 2); }
         public double CalcPerim() { return 2 * Radius * 3.14; }
+        public override string ToString() { return $"Perimeter of Circle is {CalcPerim()} and Area is {CalcArea()}"; }
+
     }
     class Triangle : IShape
     {
@@ -111,5 +132,7 @@ namespace Lab2_OOP
             side_l_length = Math.Abs(p1.Y - p3.Y);
             bottom_length = Math.Abs(p1.X - p2.X);
         }
+        public override string ToString() { return $"Perimeter of Triangle is {CalcPerim()} and Area is {CalcArea()}"; }
+
     }
 }
