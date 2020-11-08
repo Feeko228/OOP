@@ -23,20 +23,22 @@ namespace LAb_1_OOP
                     func(i, j);
         }
 
-        public string OutMatr() // OUTPUT
+        public override int GetHashCode()
+        { return base.GetHashCode(); }
+
+        public override string ToString()
         {
-            string a = null;
+            string temp = "";
             for (int i = 0; i < this.strings; i++)
             {
+                if (i != 0) temp += '\n';
                 for (int j = 0; j < this.columns; j++)
                 {
-                    a += Convert.ToString(this.matrix[i, j]);
-                    if (j != this.columns - 1)
-                        a += " ";
+                    temp += matrix[i, j];
+                    temp += ' ';
                 }
-                a += "\n";
             }
-            return a;
+            return '\n' + temp;
         }
 
         public Matr SumMatr(Matr matr_one, Matr matr_two) // ADD MATRIX
@@ -112,34 +114,8 @@ namespace LAb_1_OOP
             return this;
         }
 
-        public string CompareMatr(Matr matr_one, Matr matr_two) // MATRIX COMPARISON
-        {
-            string a = null;
-            if ((matr_one.strings == matr_two.strings) && (matr_one.columns == matr_two.columns))
-            {
-                bool equal = true;
-                for (int i = 0; i < matr_one.strings; i++)
-                    for (int j = 0; j < matr_one.columns; j++)
-                        if (matr_one.matrix[i, j] != matr_two.matrix[i, j])
-                            equal = false;
-
-                if (equal == true)
-                {
-                    a = "Similar";
-                    return a;
-                }
-                else
-                {
-                    a = "Not similar";
-                    return a;
-                }
-            }
-            else
-            {
-                a = "Not similar";
-                return a;
-            }
-        }
+        public override bool Equals(object obj)
+        { return base.Equals(obj); }
 
         public int DetMatr() // DETERMINANT
         {
@@ -187,21 +163,10 @@ namespace LAb_1_OOP
             }
         }
 
-
         private bool IsSquare()
-        {
-            if (this.strings == this.columns)
-                return true;
-            else
-                return false;
-        }
+        { return this.strings == this.columns; }
 
         private bool Is2by2()
-        {
-            if (this.strings == this.columns && this.strings == 2)
-                return true;
-            else
-                return false;
-        }
+        { return this.strings == this.columns && this.strings == 2; }
     }
 }

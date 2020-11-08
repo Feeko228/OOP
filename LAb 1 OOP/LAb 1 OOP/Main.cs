@@ -6,7 +6,7 @@ namespace LAb_1_OOP
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Random rnd = new Random();
             Matr matrix = new Matr(4, 4);
@@ -15,39 +15,35 @@ namespace LAb_1_OOP
             matrix.InitMatr((i, j) => matrix.matrix[i, j] = rnd.Next(0, 9));
             matrix2.InitMatr((i, j) => matrix2.matrix[i, j] = rnd.Next(0, 9));
 
-            string a = matrix.OutMatr();
-            Console.WriteLine(a);
-            a = matrix2.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(matrix.GetHashCode());
+            Console.WriteLine(matrix2.GetHashCode());
 
+            Console.WriteLine(matrix.ToString());
+            Console.WriteLine(matrix2.ToString());
+
+            string a;
             Console.WriteLine("Sum");
             Matr Sum = matrix.SumMatr(matrix, matrix2);
-            a = Sum.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(Sum.ToString());
 
             Console.WriteLine("Sub");
             Matr Sub = matrix.SubMatr(matrix, matrix2);
-            a = Sub.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(Sub.ToString());
 
             Console.WriteLine("Mult");
             Matr mult = matrix.MultMatr(matrix, matrix2);
-            a = mult.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(mult.ToString());
 
             Console.WriteLine("Scal");
             matrix.ScalMatr(2);
-            a = matrix.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(matrix.ToString());
 
             Console.WriteLine("FindChange");
             matrix.FindChangeElem(2, 2, 100);
-            a = matrix.OutMatr();
-            Console.WriteLine(a);
+            Console.WriteLine(matrix.ToString());
 
             Console.WriteLine("Compare");
-            a = matrix.CompareMatr(matrix, matrix2);
-            Console.WriteLine(a);
+            Console.WriteLine(matrix.Equals(matrix2));
 
             Console.WriteLine("Det");
             int b = matrix.DetMatr();
