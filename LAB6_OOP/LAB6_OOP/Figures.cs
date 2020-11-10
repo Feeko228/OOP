@@ -152,7 +152,7 @@ namespace LAB6_OOP
     class MySquare : IShape
     {
         double SideLength;
-        public MySquare(double side) { this.SideLength = side; }
+        public MySquare(double side) { SideLength = Math.Abs(side); }
         public double CalcArea() { return Math.Pow(SideLength, 2); }
         public double CalcPerim() { return SideLength * 4; }
         public override string ToString() { return $"Square ({SideLength}), P: {CalcPerim()}, S: {CalcArea()}"; }
@@ -165,8 +165,8 @@ namespace LAB6_OOP
 
         public MyRectangle(double side1, double side2)
         {
-            LeftSide = side1;
-            BottomSide = side2;
+            LeftSide = Math.Abs(side1);
+            BottomSide = Math.Abs(side2);
         }
         public double CalcArea() { return LeftSide * BottomSide; }
         public double CalcPerim() { return (LeftSide * 2) + (BottomSide * 2); }
@@ -176,7 +176,7 @@ namespace LAB6_OOP
     class MyCircle : IShape
     {
         private double Radius;
-        public MyCircle(double rad) { Radius = rad; }
+        public MyCircle(double rad) { Radius = Math.Abs(rad); }
         public double CalcArea() { return 3.14 * Math.Pow(Radius, 2); }
         public double CalcPerim() { return 2 * Radius * 3.14; }
         public override string ToString() { return $"Circle ({Radius}), P: {CalcPerim()}, S: {CalcArea()}"; }
@@ -192,9 +192,9 @@ namespace LAB6_OOP
         public double CalcPerim() { return side_r_length + side_l_length + bottom_length; }
         public MyTriangle(double side1, double side2, double side3)
         {
-            side_r_length = side1;
-            side_l_length = side2;
-            bottom_length = side3;
+            side_r_length = Math.Abs(side1);
+            side_l_length = Math.Abs(side2);
+            bottom_length = Math.Abs(side3);
         }
         public override string ToString() { return $"Triangle ({side_r_length}, {side_l_length}, {bottom_length}) P: {CalcPerim()}, S: {CalcArea()}"; }
     }
