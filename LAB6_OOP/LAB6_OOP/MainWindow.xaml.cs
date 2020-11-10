@@ -48,20 +48,24 @@ namespace LAB6_OOP
         {
             if (listbox.SelectedIndex != 0)
             {
-                ListBox tmpbox = new ListBox();
-                List<IShape> tmpshape = new List<IShape>();
-                int num = listbox.SelectedIndex - 1;
+                try
+                {
+                    ListBox tmpbox = new ListBox();
+                    List<IShape> tmpshape = new List<IShape>();
+                    int num = listbox.SelectedIndex - 1;
 
-                tmpshape.Add(figures[listbox.SelectedIndex - 1]);
-                figures[listbox.SelectedIndex - 1] = figures[listbox.SelectedIndex];
-                figures[listbox.SelectedIndex] = tmpshape[0];
+                    tmpshape.Add(figures[listbox.SelectedIndex - 1]);
+                    figures[listbox.SelectedIndex - 1] = figures[listbox.SelectedIndex];
+                    figures[listbox.SelectedIndex] = tmpshape[0];
 
-                tmpbox.Items.Add(listbox.Items[listbox.SelectedIndex - 1]);
-                listbox.Items[listbox.SelectedIndex - 1] = listbox.Items[listbox.SelectedIndex];
-                listbox.Items[listbox.SelectedIndex] = tmpbox.Items[0];
-                listbox.SelectedIndex = num;
-                gothrough();
-                figures.Save();
+                    tmpbox.Items.Add(listbox.Items[listbox.SelectedIndex - 1]);
+                    listbox.Items[listbox.SelectedIndex - 1] = listbox.Items[listbox.SelectedIndex];
+                    listbox.Items[listbox.SelectedIndex] = tmpbox.Items[0];
+                    listbox.SelectedIndex = num;
+                    gothrough();
+                    figures.Save();
+                }
+                catch { }
             }
         }
 
@@ -69,20 +73,24 @@ namespace LAB6_OOP
         {
             if (listbox.SelectedIndex != listbox.Items.Count - 1)
             {
-                ListBox tmpbox = new ListBox();
-                List<IShape> tmpshape = new List<IShape>();
-                int num = listbox.SelectedIndex + 1;
+                try
+                {
+                    ListBox tmpbox = new ListBox();
+                    List<IShape> tmpshape = new List<IShape>();
+                    int num = listbox.SelectedIndex + 1;
 
-                tmpshape.Add(figures[listbox.SelectedIndex + 1]);
-                figures[listbox.SelectedIndex + 1] = figures[listbox.SelectedIndex];
-                figures[listbox.SelectedIndex] = tmpshape[0];
+                    tmpshape.Add(figures[listbox.SelectedIndex + 1]);
+                    figures[listbox.SelectedIndex + 1] = figures[listbox.SelectedIndex];
+                    figures[listbox.SelectedIndex] = tmpshape[0];
 
-                tmpbox.Items.Add(listbox.Items[listbox.SelectedIndex + 1]);
-                listbox.Items[listbox.SelectedIndex + 1] = listbox.Items[listbox.SelectedIndex];
-                listbox.Items[listbox.SelectedIndex] = tmpbox.Items[0];
-                listbox.SelectedIndex = num;
-                gothrough();
-                figures.Save();
+                    tmpbox.Items.Add(listbox.Items[listbox.SelectedIndex + 1]);
+                    listbox.Items[listbox.SelectedIndex + 1] = listbox.Items[listbox.SelectedIndex];
+                    listbox.Items[listbox.SelectedIndex] = tmpbox.Items[0];
+                    listbox.SelectedIndex = num;
+                    gothrough();
+                    figures.Save();
+                }
+                catch { }
             }
         }
         private void createSquare_Click(object sender, RoutedEventArgs e)
