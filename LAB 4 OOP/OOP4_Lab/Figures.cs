@@ -176,6 +176,9 @@ namespace OOP4_Lab
             else if (MaxPerim.CalcPerim() < shape.CalcPerim())
                 MaxPerim = shape;
         }
+        public void getMin()
+        {
+        }
         public void AddAll(List<IShape> add)
         {
             for (int i = 0; i < add.Count; i++)

@@ -24,7 +24,7 @@ namespace LAB6_OOP
         {
             InitializeComponent();
         }
-        MainWindow main = (MainWindow)App.Current.MainWindow;
+        MainWindow main = Application.Current.Windows[0] as MainWindow;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double data1 = 0;

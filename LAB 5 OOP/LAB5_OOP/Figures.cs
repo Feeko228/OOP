@@ -114,16 +114,11 @@ namespace Lab2_OOP
         double CalcArea();
         double CalcPerim();
         string ToString();
-        string name();
     }
     [Serializable]
     class Square : IShape
     {
-        double SideLength;
-        public string name()
-        {
-            return "Square";
-        }
+        private double SideLength;
         public Square(Point p1, Point p2) { SideLength = Math.Abs(p1.Y - p2.Y); }
         public double CalcArea() { return Math.Pow(SideLength, 2); }
         public double CalcPerim() { return SideLength * 4; }
@@ -134,10 +129,6 @@ namespace Lab2_OOP
     {
         private double LeftSide;
         private double BottomSide;
-        public string name()
-        {
-            return "Rectangle";
-        }
         public Rectangle(Point p1, Point p2)
         {
             LeftSide = Math.Abs(p1.Y - p2.Y);
@@ -151,10 +142,6 @@ namespace Lab2_OOP
     class Circle : IShape
     {
         private double Radius;
-        public string name()
-        {
-            return "Circle";
-        }
         public Circle(Point p1, Point p2) { Radius = Math.Abs(p1.X - p2.X); }
         public double CalcArea() { return 3.14 * Math.Pow(Radius, 2); }
         public double CalcPerim() { return 2 * Radius * 3.14; }
@@ -165,10 +152,6 @@ namespace Lab2_OOP
     class Triangle : IShape
     {
         private int side_r_length, side_l_length, bottom_length;
-        public string name()
-        {
-            return "Triangle";
-        }
         public double CalcArea()
         {
             return Math.Sqrt(CalcPerim() / 2 * (CalcPerim() / 2 - side_r_length) * (CalcPerim() / 2 - side_l_length) * (CalcPerim() / 2 - bottom_length));

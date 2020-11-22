@@ -28,14 +28,10 @@ namespace LAB6_OOP
         }
         public void RemoveShape(int index)
         {
-            try
-            {
+            if (index <= LastShapeIndex() && index >= 0)
                 figures.RemoveAt(index);
-            }
-            catch
-            {
-
-            }
+            else
+                throw new IndexOutOfRangeException();
         }
         public int GetIndex(IShape shape)
         {
