@@ -39,7 +39,7 @@ namespace OOP4_Lab
         }
         public IShape MaxArea()
         {
-            double max = 0;
+            double max = Double.MinValue;
             IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() > max)
@@ -51,7 +51,7 @@ namespace OOP4_Lab
         }
         public IShape MinArea()
         {
-            double min = 1.7976931348623158e+308;
+            double min = Double.MaxValue;
             IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() < min)
@@ -63,7 +63,7 @@ namespace OOP4_Lab
         }
         public IShape MaxPerim()
         {
-            double max = 0;
+            double max = Double.MinValue;
             IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() > max)
@@ -75,7 +75,7 @@ namespace OOP4_Lab
         }
         public IShape MinPerim()
         {
-            double min = 1.7976931348623158e+308;
+            double min = Double.MaxValue;
             IShape found = null;
             foreach (IShape a in figures)
                 if (a.CalcPerim() < min)
@@ -166,39 +166,55 @@ namespace OOP4_Lab
                 MaxPerim = shape;
                 return;
             }
-            if (MinArea.CalcArea() > shape.CalcArea())
-                MinArea = shape;
-            else if (MaxArea.CalcArea() < shape.CalcArea())
-                MaxArea = shape;
-
-            if (MinPerim.CalcPerim() > shape.CalcPerim())
-                MinPerim = shape;
-            else if (MaxPerim.CalcPerim() < shape.CalcPerim())
-                MaxPerim = shape;
-        }
-        public void getMin()
-        {
         }
         public void AddAll(List<IShape> add)
         {
             for (int i = 0; i < add.Count; i++)
                 Add(add[i]);
         }
-        public IShape GetMaxAreaShape()
+        public IShape getMinPerim()
         {
-            return MaxArea;
+            double min = Double.MaxValue;
+            foreach (IShape a in shapes)
+                if (a.CalcPerim() < min)
+                {
+                    min = a.CalcPerim();
+                    MinPerim = a;
+                }
+            return MinPerim;
         }
-        public IShape GetMinAreaShape()
+        public IShape getMinArea()
         {
+            double min = Double.MaxValue;
+            foreach (IShape a in shapes)
+                if (a.CalcArea() < min)
+                {
+                    min = a.CalcArea();
+                    MinArea = a;
+                }
             return MinArea;
         }
-        public IShape GetMaxPerimShape()
+        public IShape getMaxPerim()
         {
+            double max = Double.MinValue;
+            foreach (IShape a in shapes)
+                if (a.CalcPerim() > max)
+                {
+                    max = a.CalcPerim();
+                    MaxPerim = a;
+                }
             return MaxPerim;
         }
-        public IShape GetMinPerimShape()
+        public IShape getMaxArea()
         {
-            return MinPerim;
+            double max = Double.MinValue;
+            foreach (IShape a in shapes)
+                if (a.CalcArea() > max)
+                {
+                    max = a.CalcArea();
+                    MaxArea = a;
+                }
+            return MaxArea;
         }
         public double GetTotalArea()
         {
