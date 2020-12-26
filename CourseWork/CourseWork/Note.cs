@@ -16,7 +16,7 @@ namespace CourseWork
     {
         private List<Note> notes = new List<Note>();
         private BinaryFormatter formatter = new BinaryFormatter();
-        string path = Path.Combine(Environment.CurrentDirectory, "Notes");
+        private string path = Path.Combine(Environment.CurrentDirectory, "Notes");
         public Note this[int i]
         {
             get { return notes[i]; }
@@ -29,14 +29,8 @@ namespace CourseWork
                     return notes[i];
             return null;
         }
-        public Note LastNote()
-        {
-            return notes.Last();
-        }
-        public int NotesListSize()
-        {
-            return notes.Count;
-        }
+        public Note LastNote() => notes.Last();
+        public int NotesListSize() => notes.Count;
         public int GetIndex(Note note)
         {
             int index = 0;
@@ -67,10 +61,8 @@ namespace CourseWork
                 }
             }
         }
-        public void ClearMemmory()
-        {
-            notes.Clear();
-        }
+        public void ClearMemmory() => notes.Clear();
+        public void DeleteNote(Note notefordelete) => notes.Remove(notefordelete);
     }
     [Serializable]
     class Note
@@ -90,40 +82,21 @@ namespace CourseWork
             Brhsname = br;
             txt = new TextNote();
         }
-        public void CreateTodoNote(string content, bool isdo, string name)
-        {
-            todos.Add(new TodoNote(content, isdo, name));
-        }
-        public void AddNewImg(string path)
-        {
-            imgs.Add(new ImgeNote(path));
-        }
-        public int LastTodoIndex()
-        {
-            return todos.Count;
-        }
-        public WrapPanel ReturnLastTodo()
-        {
-            return todos[LastTodoIndex() - 1].CreateNewTodoNote();
-        }
-        public WrapPanel ReturnTodoByIndex(int index)
-        {
-            return todos[index].CreateNewTodoNote();
-        }
+        public void CreateTodoNote(string content, bool isdo, string name) => todos.Add(new TodoNote(content, isdo, name));
+        public void ClearAllTodos() => todos.Clear();
+        public void DeleteToDoNote(TodoNote todofordelete) => todos.Remove(todofordelete);
+        public int LastTodoIndex() => todos.Count;
+        public int LastImgIndex() => imgs.Count;
+        public void AddNewPhoto(string imgpath, int PhotoIndex) => imgs.Add(new ImgeNote(imgpath, PhotoIndex));
+        public void DeleteImage(ImgeNote imgfordelete) => imgs.Remove(imgfordelete);
     }
 
     [Serializable]
     class TextNote
     {
         private string content;
-        public void SetNewText(string txt)
-        {
-            content = txt;
-        }
-        public string GetTextFromNote()
-        {
-            return content;
-        }
+        public void SetNewText(string txt) => content = txt;
+        public string GetTextFromNote() => content;
     }
     [Serializable]
     class TodoNote
@@ -137,45 +110,17 @@ namespace CourseWork
             TodoCheck = Check;
             TodoName = Name;
         }
-        public WrapPanel CreateNewTodoNote()
-        {
-            WrapPanel todo = new WrapPanel();
-            CheckBox check = new CheckBox();
-            TextBox text = new TextBox();
-            Button delete = new Button();
-
-            todo.Height = 22;
-            todo.Width = Double.NaN;
-            todo.Name = TodoName;
-
-            check.Content = null;
-            check.IsChecked = TodoCheck;
-            text.Text = TodoContent;
-
-            delete.Height = 15;
-            delete.Width = 16;
-            delete.Background = null;
-            delete.BorderBrush = null;
-            delete.Foreground = Brushes.Black;
-            delete.Margin = new Thickness(10, 0, 0, 0);
-            delete.Padding = new Thickness(-1.7, -1.3, 0, 0);
-            delete.Content = "❌";
-
-            todo.Children.Add(check);
-            todo.Children.Add(text);
-            todo.Children.Add(delete);
-
-            return todo;
-        }
     }
 
     [Serializable]
     class ImgeNote
     {
-        string path;
-        public ImgeNote(string path)
+        public string path;
+        public int ImgIndex;
+        public ImgeNote(string path, int ImgIndex)
         {
             this.path = path;
+            this.ImgIndex = ImgIndex;
         }
     }
 }

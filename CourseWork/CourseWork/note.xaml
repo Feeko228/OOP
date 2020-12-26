@@ -15,20 +15,49 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="note"
-        Height="450"
-        Width="800">
+        Height="647"
+        Width="784">
+
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="158" />
+            <ColumnDefinition Width="210*" />
+            <ColumnDefinition Width="110*" />
+            <ColumnDefinition Width="210*" />
+            <ColumnDefinition Width="165*" />
+            <ColumnDefinition Width="126*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="103" />
-            <RowDefinition Height="48" />
-            <RowDefinition />
-            <RowDefinition Height="48" />
-            <RowDefinition Height="103" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
+        <ListBox x:Name="todolist"
+                 Margin="10"
+                 Background="{x:Null}"
+                 Grid.Row="3"
+                 BorderBrush="Black"
+                 BorderThickness="1"
+                 Grid.ColumnSpan="5" />
+        <ListBox x:Name="images"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Margin="10"
+                 HorizontalContentAlignment="Center"
+                 BorderBrush="Black"
+                 BorderThickness="1"
+                 Grid.Row="1"
+                 Grid.ColumnSpan="5">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1"
+                             Padding="32"
+                             Grid.Row="4"
+                             Grid.ColumnSpan="5" />
         <TextBox x:Name="txt"
                  Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                  AcceptsReturn="True"
@@ -36,128 +65,54 @@
                  VerticalScrollBarVisibility="Auto"
                  materialDesign:HintAssist.Hint="Enter note text"
                  IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
-                 Margin="10,10,0,10"
+                 Margin="10"
                  TextChanged="SetNewTextInCurrentNote"
-                 Grid.Row="2" />
-        <ListBox x:Name="todolist"
-                 Margin="10,10,0,10"
-                 Background="{x:Null}"
-                 Grid.Row="3"
-                 Grid.RowSpan="2"
-                 Height="131"
-                 BorderBrush="Black"
-                 BorderThickness="1" />
+                 Grid.Row="2"
+                 Grid.ColumnSpan="5" />
         <TextBox x:Name="notename"
                  materialDesign:HintAssist.Hint="Enter note name"
                  TextWrapping="Wrap"
                  TextChanged="SetNewNameOfCurrentNote"
-                 PreviewTextInput="IsCurrentNoteNameCorrect"
                  Margin="10"
-                 Grid.Column="1"
-                 Grid.Row="1"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Center" />
-        <TextBox x:Name="todoname"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Grid.ColumnSpan="5" />
+        <TextBox x:Name="TodoContent"
                  materialDesign:HintAssist.Hint="Enter todo text"
-                 Margin="10"
+                 Margin="11,10,10,10"
                  TextWrapping="Wrap"
-                 Grid.Column="1"
-                 Grid.Row="3"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center" />
-        <Button Content="add todo"
+                 Grid.Row="4"
+                 VerticalContentAlignment="Center"
+                 KeyDown="EnterPress"
+                 HorizontalContentAlignment="Center"
+                 Grid.Column="3"
+                 RenderTransformOrigin="-0.094,0.6"
+                 Height="40" />
+        <Button x:Name="AddTodoClick"
+                Content="Add Todo"
                 Click="AddNewTodo"
-                Margin="10,10,10,64"
-                Grid.Column="1"
-                Height="Auto"
+                Margin="10"
                 Grid.Row="4"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
-
-        <ListBox x:Name="colors"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 Margin="10"
-                 Grid.Column="1"
-                 SelectionChanged="CheckColorChange"
-                 HorizontalContentAlignment="Center"
-                 BorderBrush="Black"
-                 BorderThickness="1"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <Rectangle x:Name="pink"
-                       Fill="Pink"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-            <Rectangle x:Name="red"
-                       Fill="Red"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-            <Rectangle x:Name="GreenYellow"
-                       Fill="GreenYellow"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-            <Rectangle x:Name="lightblue"
-                       Fill="LightBlue"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-            <Rectangle x:Name="Chocolate"
-                       Fill="Chocolate"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-            <Rectangle x:Name="orange"
-                       Fill="Orange"
-                       HorizontalAlignment="Left"
-                       Height="20"
-                       Stroke="Black"
-                       VerticalAlignment="Top"
-                       Width="20"
-                       RadiusY="9.5"
-                       RadiusX="9.5" />
-        </ListBox>
-        <ListBox x:Name="images"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 Margin="10,10,0,10"
-                 SelectionChanged="CheckColorChange"
-                 HorizontalContentAlignment="Center"
-                 BorderBrush="Black"
-                 BorderThickness="1"
-                 Grid.RowSpan="2">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
-
+                Height="40"
+                Grid.Column="4" />
+        <Button x:Name="AddPhoto"
+                Content="Add photo"
+                Margin="10,0,10,10"
+                Click="AddPhoto_Click"
+                Grid.Row="4"
+                FontSize="14"
+                Height="40"
+                RenderTransformOrigin="-2.083,13.864"
+                Padding="0"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Grid.Column="1"
+                VerticalAlignment="Bottom" />
+        <materialDesign:ColorPicker x:Name="colors1"
+                                    Height="36"
+                                    Margin="10,0,10,10"
+                                    VerticalAlignment="Bottom"
+                                    Grid.Row="4"
+                                    MouseMove="ColorChanger" />
     </Grid>
 </Window>
