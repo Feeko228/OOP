@@ -16,7 +16,7 @@
         mc:Ignorable="d"
         Title="LETI Keep"
         Height="450"
-        Width="800">
+        Width="800" MinWidth="800" MinHeight="450">
     <Grid x:Name="grid"
           x:FieldModifier="public">
         <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
                              Margin="0"
                              Grid.Column="1" />
         <Button Content="Create new note"
-                Margin="10,10,10,0"
+                Margin="11,8,9,0"
                 VerticalAlignment="Top"
                 Click="Create_Click"
                 HorizontalContentAlignment="Center"
@@ -64,7 +64,7 @@
                      RenderTransformOrigin="0.192,0.278"
                      Checked="ContainsPhoto_check"
                      Grid.Column="1" />
-        <TextBox Height="23"
+        <TextBox Height="30"
                  Margin="10.667,0,9.333,78.667"
                  TextWrapping="Wrap"
                  materialDesign:HintAssist.Hint="Enter smth to find smth"
@@ -72,20 +72,20 @@
                  Grid.Column="1"
                  TextChanged="TextBox_TextChanged" />
         <DatePicker x:Name="fromdate"
-                    Margin="10.667,47,9.333,0"
+                    Margin="11,45,9,0"
                     VerticalAlignment="Top"
                     Grid.Column="1"
                     materialDesign:HintAssist.Hint="From"
-                    Height="24" />
+                    Height="30" />
         <DatePicker x:Name="todate"
-                    Margin="9.667,76,10.333,0"
+                    Margin="11,80,9,0"
                     VerticalAlignment="Top"
                     Grid.Column="1"
                     materialDesign:HintAssist.Hint="To"
-                    Height="24" />
+                    Height="30" />
         <Button x:Name="FindByDate"
-                Content="Finde by date"
-                Margin="9.667,105,10.333,0"
+                Content="Find by date"
+                Margin="11,115,9,0"
                 VerticalAlignment="Top"
                 Grid.Column="1"
                 Click="FindByDate_Click" />

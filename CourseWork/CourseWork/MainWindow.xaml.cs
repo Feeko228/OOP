@@ -160,16 +160,16 @@ namespace CourseWork
             }
             catch
             {
-                fromdate.SelectedDate = DateTime.Now;
-                todate.SelectedDate = DateTime.Now;
-                Date1 = DateTime.Now;
-                Date2 = DateTime.Now;
+                fromdate.SelectedDate = DateTime.Today;
+                todate.SelectedDate = DateTime.Today;
+                Date1 = (DateTime)fromdate.SelectedDate;
+                Date2 = (DateTime)todate.SelectedDate;
             }
             alltypes.IsChecked = true;
             wrap.Children.Clear();
             for (int i = 0; i < col.NotesListSize(); i++)
             {
-                if (col[i].last_edit_time.CompareTo(Date1) <= 0 && col[i].last_edit_time.CompareTo(Date2) <= 0)
+                if (col[i].last_edit_time >= Date1 && col[i].last_edit_time <= Date2.AddHours(24))
                 {
                     CreateNoteBox(col[i].Name, col[i].Brhsname, col[i].last_edit_time,
                     col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex
