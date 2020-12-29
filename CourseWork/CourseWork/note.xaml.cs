@@ -206,6 +206,7 @@ namespace CourseWork
             {
                 Image selectedImage = (Image)images.SelectedItem;
                 if (selectedImage != null)
+                {
                     for (int i = 0; i < NoteForEdit.LastImgIndex(); i++)
                     {
                         if (Convert.ToInt32(selectedImage.Tag) == NoteForEdit.imgs[i].ImgIndex)
@@ -216,8 +217,9 @@ namespace CourseWork
                         }
 
                     }
-                images.Items.Remove(images.SelectedItem);
-                col.Save();
+                    images.Items.Remove(images.SelectedItem);
+                    col.Save();
+                }
             }
         }
         private void OpenImg(object sender, KeyEventArgs e)
