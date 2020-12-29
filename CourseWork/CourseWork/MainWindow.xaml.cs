@@ -160,10 +160,8 @@ namespace CourseWork
             }
             catch
             {
-                fromdate.SelectedDate = DateTime.Today;
-                todate.SelectedDate = DateTime.Today;
-                Date1 = (DateTime)fromdate.SelectedDate;
-                Date2 = (DateTime)todate.SelectedDate;
+                Date1 = DateTime.Today;
+                Date2 = DateTime.Today;
             }
             alltypes.IsChecked = true;
             wrap.Children.Clear();
