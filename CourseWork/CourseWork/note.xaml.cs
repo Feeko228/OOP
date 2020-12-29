@@ -67,7 +67,7 @@ namespace CourseWork
         private void AddNewTodo(object sender, RoutedEventArgs e)
         {
             NoteForEdit.CreateTodoNote(TodoContent.Text, false, "todo_" + todolist.Items.Count);
-            NoteForEdit.last_edit_time = DateTime.Now.ToString();
+            NoteForEdit.last_edit_time = DateTime.Now;
             todos.Add(CreateNewTodoNote(TodoContent.Text, false, "todo_" + todolist.Items.Count));
             AddTodoToUI();
             TodoContent.Text = null;
@@ -102,7 +102,7 @@ namespace CourseWork
             main.wrap.Children[indexInMain].SetValue(GroupBox.ToolTipProperty, $"Изменено:\n{DateTime.Now}");
             this.Title = NoteForEdit.Name;
             NoteForEdit.Name = notename.Text;
-            NoteForEdit.last_edit_time = DateTime.Now.ToString();
+            NoteForEdit.last_edit_time = DateTime.Now;
             col.Save();
         }
         private void ChangeTodoState(object sender, RoutedEventArgs e)
@@ -112,7 +112,7 @@ namespace CourseWork
                     if (NoteForEdit.todos[i].TodoName == (sender as CheckBox).Name)
                     {
                         NoteForEdit.todos[i].TodoCheck = (bool)(sender as CheckBox).IsChecked;
-                        NoteForEdit.last_edit_time = DateTime.Now.ToString();
+                        NoteForEdit.last_edit_time = DateTime.Now;
                         col.Save();
                     }
             if (sender.GetType().Name == "TextBox")
@@ -120,7 +120,7 @@ namespace CourseWork
                     if (NoteForEdit.todos[i].TodoName == (sender as TextBox).Name)
                     {
                         NoteForEdit.todos[i].TodoContent = (sender as TextBox).Text;
-                        NoteForEdit.last_edit_time = DateTime.Now.ToString();
+                        NoteForEdit.last_edit_time = DateTime.Now;
                         col.Save();
                     }
             if (sender.GetType().Name == "Button")
@@ -129,7 +129,7 @@ namespace CourseWork
                     {
                         NoteForEdit.DeleteToDoNote(NoteForEdit.todos[i]);
                         todolist.Items.RemoveAt(i);
-                        NoteForEdit.last_edit_time = DateTime.Now.ToString();
+                        NoteForEdit.last_edit_time = DateTime.Now;
                         col.Save();
                     }
         }
@@ -152,7 +152,7 @@ namespace CourseWork
             delete.Width = 16;
             delete.Background = null;
             delete.BorderBrush = null;
-            delete.Foreground = Brushes.Black;
+            delete.Foreground = Brushes.White;
             delete.Margin = new Thickness(10, 0, 0, 0);
             delete.Padding = new Thickness(-1.7, -1.3, 0, 0);
             delete.Content = "❌";
@@ -178,6 +178,7 @@ namespace CourseWork
             {
                 NoteForEdit.AddNewPhoto(openFileDialog.FileName, NoteForEdit.LastImgIndex());
                 CreateImgTempplate(openFileDialog.FileName, NoteForEdit.LastImgIndex() - 1);
+                NoteForEdit.last_edit_time = DateTime.Now;
                 col.Save();
             }
         }
@@ -210,6 +211,7 @@ namespace CourseWork
                         if (Convert.ToInt32(selectedImage.Tag) == NoteForEdit.imgs[i].ImgIndex)
                         {
                             NoteForEdit.DeleteImage(NoteForEdit.imgs[i]);
+                            NoteForEdit.last_edit_time = DateTime.Now;
                             col.Save();
                         }
 
@@ -244,7 +246,7 @@ namespace CourseWork
             SolidColorBrush brush = new SolidColorBrush(colors1.Color);
             ColorZoneAssist.SetBackground(main.wrap.Children[indexInMain], brush);
             NoteForEdit.Brhsname = colors1.Color.ToString();
-            NoteForEdit.last_edit_time = DateTime.Now.ToString();
+            NoteForEdit.last_edit_time = DateTime.Now;
             col.Save();
 
         }

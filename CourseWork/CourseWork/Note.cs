@@ -40,7 +40,7 @@ namespace CourseWork
                     index = notes.IndexOf(a);
             return index;
         }
-        public void CreateNewNote(string name, string br, string edittime, int NewNoteIndex)
+        public void CreateNewNote(string name, string br, DateTime edittime, int NewNoteIndex)
         {
             notes.Add(new Note(name, br, edittime, NewNoteIndex));
         }
@@ -69,18 +69,18 @@ namespace CourseWork
     {
         public string Name;
         public string Brhsname;
-        public string last_edit_time;
+        public DateTime last_edit_time;
         public int ThisNoteIndex;
-        public TextNote txt;
+        public TextNote txt = new TextNote();
         public List<TodoNote> todos = new List<TodoNote>();
         public List<ImgeNote> imgs = new List<ImgeNote>();
-        public Note(string name, string br, string edittime, int index)
+        public Note(string name, string br, DateTime edittime, int index)
         {
             last_edit_time = edittime;
             this.ThisNoteIndex = index;
             Name = name;
             Brhsname = br;
-            txt = new TextNote();
+            txt.SetNewText("");
         }
         public void CreateTodoNote(string content, bool isdo, string name) => todos.Add(new TodoNote(content, isdo, name));
         public void ClearAllTodos() => todos.Clear();

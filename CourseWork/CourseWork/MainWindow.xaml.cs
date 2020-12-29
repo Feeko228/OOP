@@ -48,12 +48,13 @@ namespace CourseWork
         }
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            CreateNoteBox("NewNote", "Red", DateTime.Now.ToString(), "", col.NotesListSize());
-            col.CreateNewNote("NewNote", "Red", DateTime.Now.ToString(), col.NotesListSize());
+            alltypes.IsChecked = true;
+            CreateNoteBox("NewNote", "Red", DateTime.Now, "", col.NotesListSize());
+            col.CreateNewNote("NewNote", "Red", DateTime.Now, col.NotesListSize());
             col.Save();
             Reload();
         }
-        public void CreateNoteBox(string Name, string Brush, string last_edit_time, string TextInNote, int index)
+        public void CreateNoteBox(string Name, string Brush, DateTime last_edit_time, string TextInNote, int index)
         {
             ContextMenu contextmenu = new ContextMenu();
             var delete = new MenuItem();
@@ -107,44 +108,74 @@ namespace CourseWork
             }
             catch { }
             Reload();
+            alltypes.IsChecked = true;
         }
-        private void onlytxt_Checked(object sender, RoutedEventArgs e)
+
+        private void ContainsPhoto_check(object sender, RoutedEventArgs e)
         {
-            Reload();
+            if (fromdate.SelectedDate != null || todate.SelectedDate != null)
+            {
+                fromdate.SelectedDate = null;
+                todate.SelectedDate = null;
+            }
             wrap.Children.Clear();
             for (int i = 0; i < col.NotesListSize(); i++)
-                if (col[i].txt.GetTextFromNote().Length > 0 &&
-                    col[i].imgs.Count <= 0 &&
-                    col[i].todos.Count <= 0 ||
-                    col[i].txt.GetTextFromNote() != null)
+                if (col[i].imgs.Count != 0)
                     CreateNoteBox(col[i].Name, col[i].Brhsname, col[i].last_edit_time, col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex);
         }
-        private void onlyimg_Checked(object sender, RoutedEventArgs e)
+        private void ContainsTodoo_check(object sender, RoutedEventArgs e)
         {
-            Reload();
             wrap.Children.Clear();
             for (int i = 0; i < col.NotesListSize(); i++)
-                if (col[i].txt.GetTextFromNote().Length >= 0 &&
-                    col[i].imgs.Count != 0 &&
-                    col[i].todos.Count >= 0 ||
-                    col[i].txt.GetTextFromNote() != null)
+                if (col[i].todos.Count != 0)
                     CreateNoteBox(col[i].Name, col[i].Brhsname, col[i].last_edit_time, col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex);
         }
-        private void onlytodo_Checked(object sender, RoutedEventArgs e)
+        private void alltypes_Checked(object sender, RoutedEventArgs e)
         {
             Reload();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            alltypes.IsChecked = true;
             wrap.Children.Clear();
             for (int i = 0; i < col.NotesListSize(); i++)
             {
-                if (col[i].txt.GetTextFromNote().Length <= 0 &&
-                    col[i].imgs.Count >= 0 &&
-                    col[i].todos.Count != 0 ||
-                    col[i].txt.GetTextFromNote() == null)
+                if (col[i].Name.Contains((sender as TextBox).Text) ||
+                    col[i].txt.GetTextFromNote().Contains((sender as TextBox).Text))
                     CreateNoteBox(col[i].Name, col[i].Brhsname, col[i].last_edit_time,
-                        col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex
-                        );
+                    col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex
+                    );
             }
         }
-        private void alltypes_Checked(object sender, RoutedEventArgs e) => Reload();
+
+        private void FindByDate_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime Date1;
+            DateTime Date2;
+            try
+            {
+                Date1 = (DateTime)fromdate.SelectedDate;
+                Date2 = (DateTime)todate.SelectedDate;
+            }
+            catch
+            {
+                fromdate.SelectedDate = DateTime.Now;
+                todate.SelectedDate = DateTime.Now;
+                Date1 = DateTime.Now;
+                Date2 = DateTime.Now;
+            }
+            alltypes.IsChecked = true;
+            wrap.Children.Clear();
+            for (int i = 0; i < col.NotesListSize(); i++)
+            {
+                if (col[i].last_edit_time.CompareTo(Date1) <= 0 && col[i].last_edit_time.CompareTo(Date2) <= 0)
+                {
+                    CreateNoteBox(col[i].Name, col[i].Brhsname, col[i].last_edit_time,
+                    col[i].txt.GetTextFromNote(), col[i].ThisNoteIndex
+                    );
+                }
+            }
+        }
     }
 }
