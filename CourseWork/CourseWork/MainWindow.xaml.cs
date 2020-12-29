@@ -113,11 +113,6 @@ namespace CourseWork
 
         private void ContainsPhoto_check(object sender, RoutedEventArgs e)
         {
-            if (fromdate.SelectedDate != null || todate.SelectedDate != null)
-            {
-                fromdate.SelectedDate = null;
-                todate.SelectedDate = null;
-            }
             wrap.Children.Clear();
             for (int i = 0; i < col.NotesListSize(); i++)
                 if (col[i].imgs.Count != 0)
